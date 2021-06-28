@@ -15,7 +15,15 @@ const articleSchema = new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now
+    },
+    hits:{
+        type:Number,
+        default:0
+    },
+    createdBy:{
+        type:String,
+        required:true,
     }
 })
 
-module.exports = mongoose.model('Article',articleSchema);
+module.exports = mongoose.model('Blog',articleSchema);

@@ -8,6 +8,15 @@
     <title>Blog</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand" href="#"><%=user%></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form method="POST" action="/logout" style="margin-left:auto" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+          </form>
+        </div>
+    </nav>
     <div class="container">
         <h1 class="mb-4">Blog Articles</h1>
         <a href="/articles/new" class="btn btn-success">New Article</a>
@@ -18,6 +27,10 @@
                     <h4 class="card-title"><%=article.title%></h4>
                     <div class="card-subtitle text-muted mb-2"><%= article.createdAt.toLocaleDateString() %></div>
                     <div class="card-text mb-2"><%=article.description %></div>     
+                    <div style="display:flex">
+                        <span>Total hits : &nbsp;</span>
+                        <span > <%=article.hits%></span>                        
+                    </div>
                     <a href="/articles/<%=article.id%>" class="btn btn-primary">Read More</a>    
                     <form action="/articles/<%=article.id%>?_method=DELETE" method="POST" class="d-inline">
                         <button type="submit" class="btn btn-danger">Delete</button>
